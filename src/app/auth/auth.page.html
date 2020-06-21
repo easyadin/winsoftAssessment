@@ -1,0 +1,88 @@
+<ion-content class="ion-padding">
+  <ion-label class="cardtitle ion-margin">
+    <h1>
+     {{isLogin ? 'Login to account' : 'Create an account'}}
+    </h1>
+  </ion-label>
+
+
+  <div class="container">
+    <form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+      <ion-card>
+        <ion-card-content>
+          <!-- Login Form -->
+          <ion-list>
+            <!-- Name -->
+            <ion-item [ngClass]="{'hide': isLogin}">
+              <ion-label position="floating">Full Name</ion-label>
+              <ion-input type="name" ngModel name="name"[required] = "isLogin == false" #name="ngModel"></ion-input>
+            </ion-item>
+            <!-- Name validation message-->
+            <ion-item *ngIf="!name.valid && name.touched" lines="none">
+              <ion-label>
+                Please enter your full name
+              </ion-label>
+            </ion-item>
+
+            <!-- Username-->
+            <ion-item>
+              <ion-label position="floating">Username</ion-label>
+              <ion-input type="username" ngModel name="username" required #username="ngModel"></ion-input>
+            </ion-item>
+            <!-- Username validation message-->
+            <ion-item *ngIf="!username.valid && username.touched" lines="none">
+              <ion-label>
+                Please enter a username
+              </ion-label>
+            </ion-item>
+
+            <!-- Password-->
+            <ion-item>
+              <ion-label position="floating">Password</ion-label>
+              <ion-input type="password" ngModel name="password" required #password="ngModel" minlength="5"></ion-input>
+            </ion-item>
+            <!-- password validation message-->
+            <ion-item *ngIf="!password.valid && password.touched" lines="none">
+              <ion-label>
+                Please enter a password (min: 5)
+              </ion-label>
+            </ion-item>
+
+            <!-- Upload profile picture -->
+            <ion-item lines="none" style="margin-top: 16px;" [ngClass]="{'hide': isLogin}">
+              <!-- input file -->
+              <input type="file" name="file" accept="image/*" (change)="onImageInputChanged($event)" id="ImgInput"
+                ngModel [required] = "isLogin == false" style="display: none;" #file="ngModel" #fileInput>
+              <ion-label> Upload a profile</ion-label>
+              <ion-buttons>
+                <ion-button (click)="fileInput.click()">
+                  <ion-icon name="cloud-upload-outline" slot="icon-only"></ion-icon>
+                </ion-button>
+              </ion-buttons>
+            </ion-item>
+            <!-- file selection validation message-->
+            <ion-item *ngIf="!file.valid && file.touched" lines="none" [ngClass]="{'hide': isLogin}">
+              <ion-label>
+                Please select an image
+              </ion-label>
+            </ion-item>
+
+            <ion-text class="ion-padding" *ngIf="selectedFile !=''">{{selectedFile}}</ion-text>
+          </ion-list>
+          <!-- login button -->
+          <ion-button expand="block" class="" type="submit" [disabled]="!registerForm.valid">
+            {{isLogin ? 'Login' : 'Register'}}</ion-button>
+          <!-- switch to login -->
+          <ion-button expand="block" fill="clear" type="button" (click)="onSwitchAuthMode()">
+            {{isLogin ? 'Dont have an account? Register' :  'Already have an account? Login'}}
+          </ion-button>
+        </ion-card-content>
+      </ion-card>
+    </form>
+
+
+  </div>
+
+
+  <!-- Register Form-->
+</ion-content>

@@ -1,0 +1,27 @@
+.cardtitle {
+    text-align: center;
+}
+
+.container {
+    max-width: 50%;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: auto;
+
+    ion-card {
+        width: 100%;
+        margin: auto;
+    }
+}
+
+@media (max-width: 800px) {
+    .container {
+        max-width: 100%;
+    }
+}
+
+
+.hide {
+    display: none;
+}

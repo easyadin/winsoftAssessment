@@ -1,20 +1,36 @@
 <ion-header [translucent]="true">
-  <ion-toolbar>
+  <ion-toolbar *ngFor="let detail of userDetail">
+    <ion-thumbnail slot="start">
+      <ion-img [src]="detail.profilePicture"></ion-img>
+    </ion-thumbnail>
     <ion-title>
-      Blank
+      Hey, {{detail.username}}
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="onLogout()">
+        <ion-icon name="log-in-outline"></ion-icon>Logout
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
-
+<ion-content [fullscreen]="true" >
   <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+    <ion-item lines="none">
+      <ion-label *ngFor="let detail of userDetail">
+        <strong>Welcome Home {{detail.username}}</strong>
+        <p>Today's Date is {{TodaysDate |  date: 'shortDate'}}</p>
+      </ion-label>
+    </ion-item>
+    <ion-button expand="block" class="" routerLink="/home/update"> Update Username </ion-button>
+
+    <ion-item lines="none" class="ion-padding ion-margin cp">
+      <ion-label>
+        <h1>Custome Pipe | Abbreviate Javascript to Js</h1>
+        <p>{{someText | abbreviate}}</p>
+      </ion-label>
+    </ion-item>
   </div>
 </ion-content>
+
+<span> show something</span>

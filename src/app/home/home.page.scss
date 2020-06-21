@@ -6,6 +6,11 @@
   right: 0;
   top: 50%;
   transform: translateY(-50%);
+
+  ion-button {
+    margin: auto;
+    max-width: 250px;
+  }
 }
 
 #container strong {
@@ -24,4 +29,25 @@
 
 #container a {
   text-decoration: none;
+}
+
+ion-header {
+  padding: 10px;
+
+  ion-img {
+    border-radius: 100%;
+  }
+}
+
+ion-label {
+  text-align: center;
+}
+
+.cp {
+  p {
+    max-width: 400px;
+    white-space: normal;
+    text-align: center;
+    margin: auto!important;
+  }
 }
